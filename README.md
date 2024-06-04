@@ -6,3 +6,5 @@ This program's purpose is to test [ASLR(address space layout randomization)](htt
 ```
 ./main <number of child processes>
 ```
+
+This code is a code that I failed, and I'm just adding this for historical purpose.

@@ -29,13 +29,13 @@ int main(int argc, char *argv[])
             return EXIT_FAILURE;
         } else if(child == 0)
         {
-            execl("./child", "child", filename, NULL);
-            perror("execl failed");
+            int fd = open(filename, O_APPEND | O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR);
+            do_memaddr_log(fd);
+            close(fd);
             return EXIT_SUCCESS;
         } else
         {
-            int status;
-            waitpid(child, &status, 0);
+            wait(NULL);
         }
     }
     printf("Done.\n");

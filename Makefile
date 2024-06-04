@@ -1,12 +1,16 @@
 CC = gcc
-CFLAGS = -g
+CFLAGS = -c -g
+OBJ = main.o aslr.o
+TARGET = aslr_test
+all: $(TARGET)
 
-all: child main
+$(TARGET) : $(OBJ)
+	$(CC) -o $@ $^
 
-child: aslr.c
+child.o : aslr.c
 	$(CC) $(CFLAGS) -o $@ $<
 
-main: main.c
+main.o : main.c
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:

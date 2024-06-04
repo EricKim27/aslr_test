@@ -25,13 +25,3 @@ void do_memaddr_log(int fd)
         perror("write2");
     free(a);
 }
-
-int main(int argc, char *argv[])
-{
-    printf("started PID %d\n", getpid());
-    char *filename = argv[1];
-    int fd = open(filename, O_APPEND | O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR);
-    do_memaddr_log(fd);
-    close(fd);
-    return EXIT_SUCCESS;
-}
